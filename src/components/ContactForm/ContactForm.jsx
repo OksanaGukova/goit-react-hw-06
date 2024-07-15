@@ -4,6 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
+import { addContact } from "../../redux/contactsSlice";
 
 
 const FeedbackSchema = Yup.object().shape({
@@ -30,10 +31,9 @@ const ContactForm = () => {
     const numberFieldId = useId();
     
 
-     const handleSubmit = (event) => {
-       const form = event.target;
-       dispatch(addContact(form.elements.text.value));
-       form.reset();
+     const handleSubmit = (values, { resetForm }) => {
+       dispatch(addContact(values));
+       resetForm();
      };
 
 

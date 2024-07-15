@@ -1,14 +1,16 @@
-import { createSlice, nanoid} from "@reduxjs/toolkit";
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
+// Початковий стан слайсу контактів
 const initialState = {
   contacts: {
-		items: []
-	},
+    items: [],
+  },
   filters: {
-		name: ""
-	},
+    name: "",
+  },
 };
 
+// Створення слайсу контактів
 const contactsSlice = createSlice({
   name: "contacts",
   initialState,
@@ -27,15 +29,18 @@ const contactsSlice = createSlice({
       },
     },
     deleteContact(state, action) {
-       state.contacts.items = state.contacts.items.filter(
-         (contact) => contact.id !== action.payload
-       );
-    }
-}
+      state.contacts.items = state.contacts.items.filter(
+        (contact) => contact.id !== action.payload
+      );
+    },
+  },
 });
+
 
 export const { addContact, deleteContact } = contactsSlice.actions;
 
+
+export const selectContacts = (state) => state.contacts.items;
+
+
 export default contactsSlice.reducer;
-
-
