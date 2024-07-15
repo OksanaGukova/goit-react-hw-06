@@ -21,21 +21,19 @@ const FeedbackSchema = Yup.object().shape({
 });
 
 const ContactForm = () => {
-     const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const initialValues = {
     name: "",
     number: "",
   };
 
   const nameFieldId = useId();
-    const numberFieldId = useId();
-    
+  const numberFieldId = useId();
 
-     const handleSubmit = (values, { resetForm }) => {
-       dispatch(addContact(values));
-       resetForm();
-     };
-
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(addContact({ name: values.name, number: values.number }));
+    resetForm();
+  };
 
   return (
     <Formik
@@ -46,32 +44,22 @@ const ContactForm = () => {
       <Form>
         <div>
           <div>
-            <label>Name</label>
-            <Field
-              name="name"
-              type="text"
-              id={nameFieldId}
-            />
-            <div >
+            <label htmlFor={nameFieldId}>Name</label>
+            <Field name="name" type="text" id={nameFieldId} />
+            <div>
               <ErrorMessage name="name" component="div" />
             </div>
           </div>
-          <div >
-            <label >Number</label>
-            <Field
-              name="number"
-              type="text"
-              id={numberFieldId}
-            />
+          <div>
+            <label htmlFor={numberFieldId}>Number</label>
+            <Field name="number" type="text" id={numberFieldId} />
             <div>
               <ErrorMessage name="number" component="div" />
             </div>
           </div>
         </div>
         <div>
-          <Button type="submit">
-            Add contact
-          </Button>
+          <Button type="submit">Add contact</Button>
         </div>
       </Form>
     </Formik>

@@ -22,5 +22,4 @@ export default function Contact({ name, number, id }) {
       <button onClick={handleDelete}>Delete</button>
     </li>
   );
-}
- */
+} */

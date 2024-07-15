@@ -10,7 +10,6 @@ const initialState = {
   },
 };
 
-// Створення слайсу контактів
 const contactsSlice = createSlice({
   name: "contacts",
   initialState,

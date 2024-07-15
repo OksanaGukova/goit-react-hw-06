@@ -1,13 +1,27 @@
 /* import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Contact from "../Contact/Contact";
+import { selectContacts } from "../../redux/contactsSlice";
 
 
-export default function ContactList({ contacts }) {
+const ContactList = () => {
+
+
+  const contacts = useSelector(selectContacts);
+
   return (
-    <ul >
+    <ul>
       {contacts.map(({ id, name, number }) => (
-        <Contact key={id} id={id} name={name} number={number} />
+        <Contact
+          key={id}
+          contact={{ id, name, number }}
+          name={name}
+          number={number}
+        />
       ))}
     </ul>
   );
-} */
+};
+
+export default ContactList;
+ */
