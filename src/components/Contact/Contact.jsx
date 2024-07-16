@@ -1,25 +1,24 @@
-/* import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { ImPhone } from "react-icons/im";
 import { BsPeopleFill } from "react-icons/bs";
 import { deleteContact } from "../../redux/contactsSlice";
 
-export default function Contact({ name, number, id }) {
+export default function Contact({ contact }) {
   const dispatch = useDispatch();
-  const handleDelete = () => dispatch(deleteContact(id));
-
+  const handleDelete = () => dispatch(deleteContact(contact.id));
   return (
     <li>
       <div>
         <div>
           <BsPeopleFill />
-          <p>{name}</p>
+          <p>{contact.name}</p>
         </div>
         <div>
           <ImPhone />
-          <p>{number}</p>
+          <p>{contact.number}</p>
         </div>
       </div>
       <button onClick={handleDelete}>Delete</button>
     </li>
   );
-} */
+}

@@ -2,12 +2,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 // Початковий стан слайсу контактів
 const initialState = {
-  contacts: {
-    items: [],
-  },
-  filters: {
-    name: "",
-  },
+  items: [],
 };
 
 const contactsSlice = createSlice({
@@ -16,30 +11,31 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.contacts.items.push(action.payload);
+        state.items.push(action.payload);
       },
-      prepare(text) {
+      prepare({ name, number }) {
         return {
           payload: {
-            text,
             id: nanoid(),
+            name,
+            number,
           },
         };
       },
     },
     deleteContact(state, action) {
-      state.contacts.items = state.contacts.items.filter(
+      state.items = state.items.filter(
         (contact) => contact.id !== action.payload
       );
     },
   },
 });
 
-
+// Експортуємо екшени
 export const { addContact, deleteContact } = contactsSlice.actions;
 
-
+// Оголошуємо селектор
 export const selectContacts = (state) => state.contacts.items;
 
-
+// Експортуємо редюсер
 export default contactsSlice.reducer;
