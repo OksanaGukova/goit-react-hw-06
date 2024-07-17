@@ -1,9 +1,10 @@
 import { createSlice, nanoid } from "@reduxjs/toolkit";
+import contactsData from '../contacts.json'
 
-// Початковий стан слайсу контактів
 const initialState = {
-  items: [],
+  items: contactsData,
 };
+
 
 const contactsSlice = createSlice({
   name: "contacts",
@@ -31,11 +32,11 @@ const contactsSlice = createSlice({
   },
 });
 
-// Експортуємо екшени
+
 export const { addContact, deleteContact } = contactsSlice.actions;
 
-// Оголошуємо селектор
+
 export const selectContacts = (state) => state.contacts.items;
 
-// Експортуємо редюсер
+
 export default contactsSlice.reducer;

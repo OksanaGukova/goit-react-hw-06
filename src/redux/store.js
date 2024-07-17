@@ -8,10 +8,10 @@ import filtersSlice from "./filtersSlice";
 const persistConfig = {
   key: "contacts",
   storage,
-  whitelist: ["items"], // Збереження тільки поля items
+  whitelist: ["items"], 
 };
 
-// Застосування persistReducer до редюсера слайса контактів
+
 const persistedContactsReducer = persistReducer(persistConfig, contactsSlice);
 
 export const store = configureStore({
