@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import Button from "../Button/Button";
 import { addContact } from "../../redux/contactsSlice";
+import css from './ContactForm.module.css'
 
 const FeedbackSchema = Yup.object().shape({
   name: Yup.string()
@@ -39,25 +40,37 @@ const ContactForm = () => {
       onSubmit={handleSubmit}
       validationSchema={FeedbackSchema}
     >
-      <Form>
-        <div>
-          <div>
+      <Form className={css.container}>
+        <div className={css.containerItem}>
+          <div className={css.fieldContainer}>
             <label htmlFor={nameFieldId}>Name</label>
-            <Field name="name" type="text" id={nameFieldId} />
-            <div>
+            <Field
+              className={css.input}
+              name="name"
+              type="text"
+              id={nameFieldId}
+            />
+            <div className={css.errorMessage}>
               <ErrorMessage name="name" component="div" />
             </div>
           </div>
-          <div>
+          <div className={css.fieldContainer}>
             <label htmlFor={numberFieldId}>Number</label>
-            <Field name="number" type="text" id={numberFieldId} />
-            <div>
+            <Field
+              className={css.input}
+              name="number"
+              type="text"
+              id={numberFieldId}
+            />
+            <div className={css.errorMessage}>
               <ErrorMessage name="number" component="div" />
             </div>
           </div>
         </div>
-        <div>
-          <Button type="submit">Add contact</Button>
+        <div className={css.buttonContainer}>
+          <Button className={css.button} type="submit">
+            Add contact
+          </Button>
         </div>
       </Form>
     </Formik>
